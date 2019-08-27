@@ -28,3 +28,20 @@ The third and last part is just image registration using orb algorithm.
 
 Unfortunately, as accuracy of filter and image registration part of this code is not high enough, use those two part only for the brief test.
 Instead, follow the image processing tutorial explained below to improve image registration quality as well as character recognition level.
+
+## Image Processing
+This folder includes the codes and folders that are needed in order to enhance image registraction and character recognition level of PMS monitor. 
+
+You can just run the codes following the steps to obtain the binary form of PMS image.
+
+1. Run [prep.py](https://github.com/kristine4658/EMedAI/blob/master/Image%20Processing/prep.py) to eliminate vivid colors inside the monitor. Since image registration algorithm uses features of the picture, this code would help to reduce miss detection of feature at colored characters. Change the color range if needed.
+<p align="center">
+  <img src="Image Processing/prepro/test.JPG" width="300" height="300">
+</p>
+
+2. Run [autoreg.py](https://github.com/kristine4658/EMedAI/blob/master/Image%20Processing/autoreg.py). The code includes 3 parts of unsharping, resizing of image and image registration. Unsharped image will be saved in 'midpro' folder, and using this proccessed image from 'midpro,' get warpPerspective and apply it to cropped image that is not filtered.
+
+3. Run [detect_color.py](https://github.com/kristine4658/EMedAI/blob/master/Image%20Processing/detect_color.py) to extract each numbers by different colors. This will be used as annotation for PMS category. 
+
+If you don't want to divide characters by colors, use [black_picker.py](https://github.com/kristine4658/EMedAI/blob/master/Image%20Processing/black_picker.py) and want to try different method of placing black circle inside the monitor to improve image registration level, use [prep2.py](https://github.com/kristine4658/EMedAI/blob/master/Image%20Processing/prep2.py)
+
